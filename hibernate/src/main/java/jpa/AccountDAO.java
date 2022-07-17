@@ -2,6 +2,6 @@ package jpa;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface AccountReadRepository extends JpaRepository<Account, Long> {
+public interface AccountDAO extends JpaRepository<Account, Long> {
 
 }
