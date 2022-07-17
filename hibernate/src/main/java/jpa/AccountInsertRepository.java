@@ -1,8 +1,11 @@
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
+package jpa;
+
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 @Repository
 @Component
@@ -18,7 +21,7 @@ class AccountInsertRepository {
                 .setParameter(2, account.getUsername())
                 .setParameter(3, account.getPassword())
                 .setParameter(4, account.getEmail())
-                .setParameter(5, account.getCratedOn())
+                .setParameter(5, account.getCreatedOn())
                 .setParameter(6, account.getLastLogin())
                 .executeUpdate();
     }

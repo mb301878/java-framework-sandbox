@@ -1,9 +1,5 @@
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+package jpa;
+
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -11,6 +7,12 @@ import lombok.ToString;
 import org.hibernate.Hibernate;
 
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
 import java.util.Objects;
 
@@ -24,12 +26,11 @@ public class Account {
 
     @Id
     @Column(name = "user_id", nullable = false)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
     private String username;
     private String password;
     private String email;
-    private Date cratedOn;
+    private Date createdOn;
     private Date lastLogin;
 
     @Override

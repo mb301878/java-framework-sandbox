@@ -1,3 +1,5 @@
+package jpa;
+
 import lombok.experimental.UtilityClass;
 
 import java.util.Date;
@@ -11,7 +13,7 @@ class AccountObjectMother {
         account.setUsername("user");
         account.setPassword("pass");
         account.setEmail("email@inbox.pl");
-        account.setCratedOn(new Date(0L));
+        account.setCreatedOn(new Date(0L));
         account.setLastLogin(new Date(10000L));
         return account;
     }
