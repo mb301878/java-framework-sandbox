@@ -9,6 +9,8 @@ import org.springframework.boot.test.util.TestPropertyValues;
 import org.springframework.context.ApplicationContextInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.DynamicPropertyRegistry;
+import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
@@ -21,7 +23,7 @@ import static org.assertj.core.api.BDDAssertions.then;
 
 @Testcontainers
 @SpringBootTest
-@ContextConfiguration(classes = Runner.class, initializers = {Crud_scenarios_spring_context.Initializer.class})
+@ContextConfiguration(classes = Runner.class)
 public class Crud_scenarios_spring_context {
 
     @Container
@@ -35,7 +37,6 @@ public class Crud_scenarios_spring_context {
 
     @BeforeEach
     void cleanDb() {
-        // bad practise, I have to check with dynamic properties
         accountDAO.deleteAll();
     }
 
@@ -72,14 +73,11 @@ public class Crud_scenarios_spring_context {
         then(actualAccount.get(0)).isEqualTo(simpleAccountUpdated());
     }
 
-    static class Initializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
 
-        public void initialize(ConfigurableApplicationContext configurableApplicationContext) {
-            TestPropertyValues.of(
-                    "spring.datasource.url=" + postgreSQLContainer.getJdbcUrl(),
-                    "spring.datasource.username=" + postgreSQLContainer.getUsername(),
-                    "spring.datasource.password=" + postgreSQLContainer.getPassword()
-            ).applyTo(configurableApplicationContext.getEnvironment());
-        }
+    @DynamicPropertySource
+    static void registerPgProperties(DynamicPropertyRegistry registry) {
+        registry.add("spring.datasource.url", () -> postgreSQLContainer.getJdbcUrl());
+        registry.add("spring.datasource.username", () -> postgreSQLContainer.getUsername());
+        registry.add("spring.datasource.password", () -> postgreSQLContainer.getPassword());
     }
 }
