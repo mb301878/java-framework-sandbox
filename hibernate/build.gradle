@@ -1,0 +1,42 @@
+plugins {
+    id 'java'
+    id "io.freefair.lombok" version "5.3.0"
+}
+
+group 'mb301878'
+version '1.0.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    implementation("org.hibernate:hibernate-core:5.6.9.Final")
+    implementation("org.hibernate:hibernate-entitymanager:5.6.10.Final")
+
+    compileOnly("org.projectlombok:lombok:1.18.24")
+
+    implementation("org.postgresql:postgresql:42.4.0")
+
+
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${JUNIT}")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${JUNIT}")
+
+    testImplementation("org.testcontainers:junit-jupiter:${TEST_CONTAINERS}")
+    testImplementation("org.testcontainers:postgresql:${TEST_CONTAINERS}")
+
+    testImplementation("org.assertj:assertj-core:3.23.1")
+
+    testImplementation("org.springframework.boot:spring-boot-starter-test:${SPRING_BOOT}")
+
+    implementation("org.springframework.boot:spring-boot-starter:${SPRING_BOOT}")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa:${SPRING_BOOT}")
+
+
+
+}
+
+test {
+    useJUnitPlatform()
+}
