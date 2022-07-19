@@ -15,11 +15,9 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
 
 //    potrzebne do swaggera
-//    implementation("io.swagger.core.v3:swagger-core:2.2.1")
-    implementation("org.springdoc:springdoc-openapi-ui:1.6.9")
+    implementation("org.springdoc:springdoc-openapi-webflux-ui:1.6.9")
 
     implementation("org.springframework.boot:spring-boot-starter-webflux:2.7.1")
-
 
     compileOnly("org.projectlombok:lombok:1.18.24")
 
