@@ -16,7 +16,7 @@ class ResponseRenderer {
     private final String ERROR_MESSAGE = "i am a teapot heh";
 
     Mono<ServerResponse> renderResponseAccepted(Object dto) {
-        return ServerResponse.accepted()
+        return ServerResponse.ok()
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(BodyInserters.fromValue(dto))
                 .onErrorResume(ResponseRenderer::getErrorResponse);
