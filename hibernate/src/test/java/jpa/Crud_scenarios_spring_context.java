@@ -1,13 +1,9 @@
 package jpa;
 
-import lombok.Builder;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.util.TestPropertyValues;
-import org.springframework.context.ApplicationContextInitializer;
-import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
@@ -34,6 +30,13 @@ public class Crud_scenarios_spring_context {
 
     @Autowired
     AccountDAO accountDAO;
+
+    @DynamicPropertySource
+    static void registerPgProperties(DynamicPropertyRegistry registry) {
+        registry.add("spring.datasource.url", () -> postgreSQLContainer.getJdbcUrl());
+        registry.add("spring.datasource.username", () -> postgreSQLContainer.getUsername());
+        registry.add("spring.datasource.password", () -> postgreSQLContainer.getPassword());
+    }
 
     @BeforeEach
     void cleanDb() {
@@ -71,13 +74,5 @@ public class Crud_scenarios_spring_context {
         List<Account> actualAccount = accountDAO.findAll();
         then(actualAccount).hasSize(1);
         then(actualAccount.get(0)).isEqualTo(simpleAccountUpdated());
-    }
-
-
-    @DynamicPropertySource
-    static void registerPgProperties(DynamicPropertyRegistry registry) {
-        registry.add("spring.datasource.url", () -> postgreSQLContainer.getJdbcUrl());
-        registry.add("spring.datasource.username", () -> postgreSQLContainer.getUsername());
-        registry.add("spring.datasource.password", () -> postgreSQLContainer.getPassword());
     }
 }
