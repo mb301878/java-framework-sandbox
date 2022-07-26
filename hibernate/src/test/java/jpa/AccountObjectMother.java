@@ -1,5 +1,6 @@
 package jpa;
 
+import jpa.simple.crud.Account;
 import lombok.experimental.UtilityClass;
 
 import java.util.Date;

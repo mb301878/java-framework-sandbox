@@ -1,4 +1,4 @@
-package jpa;
+package jpa.simple.crud;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -9,8 +9,6 @@ import org.hibernate.Hibernate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
@@ -20,7 +18,6 @@ import java.util.Objects;
 @Getter
 @Setter
 @ToString
-@RequiredArgsConstructor
 @Table(name = "accounts")
 public class Account {
 

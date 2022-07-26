@@ -1,4 +1,4 @@
-package jpa;
+package jpa.simple.crud;
 
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
@@ -9,7 +9,7 @@ import javax.persistence.PersistenceContext;
 
 @Repository
 @Component
-class AccountInsertRepository {
+public class AccountInsertRepository {
 
     @PersistenceContext
     private EntityManager entityManager;

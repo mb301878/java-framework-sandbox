@@ -1,5 +1,8 @@
 package jpa;
 
+import jpa.simple.crud.Account;
+import jpa.simple.crud.AccountDAO;
+import jpa.simple.crud.AccountInsertRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
