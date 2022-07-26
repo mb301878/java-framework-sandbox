@@ -8,8 +8,12 @@ CREATE TABLE accounts (
     last_login TIMESTAMP
 );
 
---https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-create-table/
---CREATE TABLE accounts (
---	user_id INT PRIMARY KEY,
---	username VARCHAR ( 50 )
---);
+CREATE TABLE users (
+	user_id INT PRIMARY KEY,
+	bar_id INT
+);
+
+CREATE TABLE bars (
+	bar_id INT,
+	user_id INT
+);

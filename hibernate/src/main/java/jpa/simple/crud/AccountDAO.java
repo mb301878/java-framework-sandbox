@@ -1,4 +1,4 @@
-package jpa;
+package jpa.simple.crud;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
