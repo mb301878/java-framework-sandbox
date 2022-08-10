@@ -1,5 +1,6 @@
 package jpa.relation;
 
+import jpa.relation.transaction.BarUserTransaction;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -38,6 +39,14 @@ public class BarUserInsertRepository {
         // // bars.forEach(session::save);
         //
         // tx.commit();
+    }
+
+    public void insert(BarUserTransaction barUserTransaction) {
+        Session session = sessionFactory.getCurrentSession();
+        Transaction tx = session.beginTransaction();
+        barUserTransaction.getUsers().forEach(session::save);
+        session.save(barUserTransaction.getBar());
+        tx.commit();
     }
 
 }

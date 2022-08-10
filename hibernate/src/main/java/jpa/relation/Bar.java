@@ -24,13 +24,13 @@ public class Bar {
 
     @Id
     @Column(name = "bar_id", nullable = false)
-    private Integer barId;
+    private Long barId;
     @OneToMany(mappedBy = "bar")
     private Set<User> users;
 
     public static Bar newInstanceOfBarWithNoUsers(int barId) {
         Bar bar = new Bar();
-        bar.setBarId(barId);
+        bar.setBarId((long) barId);
         return bar;
     }
 

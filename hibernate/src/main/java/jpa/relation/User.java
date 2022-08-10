@@ -24,14 +24,14 @@ public class User {
 
     @Id
     @Column(name = "user_id", nullable = false)
-    private Integer userId;
+    private Long userId;
     @ManyToOne
     @JoinColumn(name = "bar_id", nullable = false)
     private Bar bar;
 
     public static User newInstanceOfUserWithNoBar(int userId) {
         User user = new User();
-        user.setUserId(userId);
+        user.setUserId((long) userId);
         return user;
     }
 
