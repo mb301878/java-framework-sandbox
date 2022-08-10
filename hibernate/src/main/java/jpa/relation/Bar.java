@@ -1,6 +1,5 @@
 package jpa.relation;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -25,9 +24,16 @@ public class Bar {
 
     @Id
     @Column(name = "bar_id", nullable = false)
-    private Integer bar_id;
-    @OneToMany(mappedBy = "barId")
+    private Integer barId;
+    @OneToMany(mappedBy = "bar")
     private Set<User> users;
+
+    public static Bar newInstanceOfBarWithNoUsers(int barId) {
+        Bar bar = new Bar();
+        bar.setBarId(barId);
+        return bar;
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -38,7 +44,7 @@ public class Bar {
             return false;
         }
         Bar bar = (Bar) o;
-        return bar_id != null && Objects.equals(bar_id, bar.bar_id);
+        return barId != null && Objects.equals(barId, bar.barId);
     }
 
     @Override
