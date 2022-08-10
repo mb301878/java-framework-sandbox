@@ -3,7 +3,9 @@ package jpa;
 import jpa.relation.BarDAO;
 import jpa.relation.BarUserInsertRepository;
 import jpa.relation.UserDAO;
+import jpa.relation.transaction.BarUserTransaction;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
@@ -12,6 +14,10 @@ import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
+
+import java.util.Set;
+
+import static org.assertj.core.api.BDDAssertions.then;
 
 @Testcontainers
 @SpringBootTest
@@ -43,5 +49,20 @@ class Crud_scenarios_for_relations {
         userDAO.deleteAll();
     }
 
+    @Test
+    void save_and_read_users_and_bar() {
+        BarUserTransaction transaction = BarUserTransaction
+                .builder()
+                .bar(10)
+                .users(Set.of(1, 2, 3))
+                .build();
+
+        barUserInsertRepository.insert(transaction);
+
+        then(userDAO.existsById(1L)).isTrue();
+        then(userDAO.existsById(2L)).isTrue();
+        then(userDAO.existsById(3L)).isTrue();
+        then(barDAO.existsById(10L)).isTrue();
+    }
 
 }

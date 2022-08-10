@@ -8,10 +8,10 @@ import lombok.experimental.UtilityClass;
 class IdComparator {
 
     static boolean userHasId(User user, int id) {
-        return user.getUserId().equals(id);
+        return user.getUserId().equals((long) id);
     }
 
     static boolean barHasId(Bar bar, int id) {
-        return bar.getBarId().equals(id);
+        return bar.getBarId().equals((long) id);
     }
 }
