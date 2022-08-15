@@ -5,6 +5,8 @@ import jpa.relation.BarUserInsertRepository;
 import jpa.relation.UserDAO;
 import jpa.relation.transaction.BarUserTransaction;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayNameGeneration;
+import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,6 +24,7 @@ import static org.assertj.core.api.BDDAssertions.then;
 @Testcontainers
 @SpringBootTest
 @ContextConfiguration(classes = Runner.class)
+@DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class Crud_scenarios_for_relations {
 
     @Container

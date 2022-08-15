@@ -4,6 +4,8 @@ import jpa.simple.crud.Account;
 import jpa.simple.crud.AccountDAO;
 import jpa.simple.crud.AccountInsertRepository;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayNameGeneration;
+import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -23,6 +25,7 @@ import static org.assertj.core.api.BDDAssertions.then;
 @Testcontainers
 @SpringBootTest
 @ContextConfiguration(classes = Runner.class)
+@DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 public class Crud_scenarios_spring_context {
 
     @Container
