@@ -8,12 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
-import java.util.Collection;
-import java.util.Set;
-import java.util.stream.Collectors;
-
-import static jpa.relation.Bar.newInstanceOfBarWithNoUsers;
-
 @Repository
 @Component
 public class BarUserInsertRepository {
@@ -21,31 +15,20 @@ public class BarUserInsertRepository {
     @Autowired
     private SessionFactory sessionFactory;
 
-    public void insertUsersForBar(Collection<User> userIds, int barId) {
-
-        // Set<User> users = userIds.stream()
-        //         .map(User::newInstanceOfUserWithNoBar)
-        //         .collect(Collectors.toSet());
-        //
-        // Bar bar = newInstanceOfBarWithNoUsers(barId);
-        //
-        // bar.setUsers(users);
-        // users.forEach();
-        //
-        // Session session = sessionFactory.getCurrentSession();
-        // Transaction tx = session.beginTransaction();
-        //
-        // users.forEach(session::save);
-        // // bars.forEach(session::save);
-        //
-        // tx.commit();
-    }
+    // public void insert(BarUserTransaction barUserTransaction) {
+    //     Session session = sessionFactory.openSession();
+    //     Transaction tx = session.beginTransaction();
+    //     session.save(barUserTransaction.getBar());
+    //     barUserTransaction.getUsers().forEach(session::save);
+    //     tx.commit();
+    //     session.close();
+    // }
 
     public void insert(BarUserTransaction barUserTransaction) {
         Session session = sessionFactory.getCurrentSession();
         Transaction tx = session.beginTransaction();
-        barUserTransaction.getUsers().forEach(session::save);
         session.save(barUserTransaction.getBar());
+        barUserTransaction.getUsers().forEach(session::save);
         tx.commit();
     }
 
