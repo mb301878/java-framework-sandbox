@@ -1,4 +1,4 @@
-package jpa.relation;
+package orm.relations;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

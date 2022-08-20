@@ -1,10 +1,10 @@
-package jpa.relation.transaction;
+package orm.relations.transaction;
 
-import jpa.relation.User;
+import orm.relations.User;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 
-import static jpa.relation.transaction.IdComparator.barHasId;
+import static orm.relations.transaction.IdComparator.barHasId;
 import static org.junit.Assert.*;
 
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
