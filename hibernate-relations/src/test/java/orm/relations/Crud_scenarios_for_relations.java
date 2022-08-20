@@ -1,9 +1,6 @@
-package jpa;
+package orm.relations;
 
-import jpa.relation.BarDAO;
-import jpa.relation.BarUserInsertRepository;
-import jpa.relation.UserDAO;
-import jpa.relation.transaction.BarUserTransaction;
+import orm.relations.transaction.BarUserTransaction;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
@@ -30,11 +27,11 @@ class Crud_scenarios_for_relations {
     @Container
     public static PostgreSQLContainer<?> postgreSQLContainer = DbProvider.defaultDb();
 
-    @Autowired
-    BarDAO barDAO;
-
-    @Autowired
-    UserDAO userDAO;
+    // @Autowired
+    // BarDAO barDAO;
+    //
+    // @Autowired
+    // UserDAO userDAO;
 
     @Autowired
     BarUserInsertRepository barUserInsertRepository;
@@ -48,8 +45,8 @@ class Crud_scenarios_for_relations {
 
     @BeforeEach
     void cleanDb() {
-        barDAO.deleteAll();
-        userDAO.deleteAll();
+        // barDAO.deleteAll();
+        // userDAO.deleteAll();
     }
 
     @Test
@@ -62,10 +59,10 @@ class Crud_scenarios_for_relations {
 
         barUserInsertRepository.insert(transaction);
 
-        then(userDAO.existsById(1L)).isTrue();
-        then(userDAO.existsById(2L)).isTrue();
-        then(userDAO.existsById(3L)).isTrue();
-        then(barDAO.existsById(10L)).isTrue();
+        // then(userDAO.existsById(1L)).isTrue();
+        // then(userDAO.existsById(2L)).isTrue();
+        // then(userDAO.existsById(3L)).isTrue();
+        // then(barDAO.existsById(10L)).isTrue();
     }
 
 }

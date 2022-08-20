@@ -1,11 +1,11 @@
-package jpa.relation.transaction;
+package orm.relations.transaction;
 
-import jpa.relation.Bar;
-import jpa.relation.User;
+import orm.relations.Bar;
+import orm.relations.User;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 
-import static jpa.relation.transaction.IdComparator.userHasId;
+import static orm.relations.transaction.IdComparator.userHasId;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)

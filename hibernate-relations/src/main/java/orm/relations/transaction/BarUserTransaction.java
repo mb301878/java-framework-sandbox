@@ -1,7 +1,7 @@
-package jpa.relation.transaction;
+package orm.relations.transaction;
 
-import jpa.relation.Bar;
-import jpa.relation.User;
+import orm.relations.Bar;
+import orm.relations.User;
 import lombok.Value;
 
 import java.util.Set;

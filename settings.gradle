@@ -1,3 +1,4 @@
 include 'hibernate'
 include 'rest'
+include 'hibernate-relations'
 
