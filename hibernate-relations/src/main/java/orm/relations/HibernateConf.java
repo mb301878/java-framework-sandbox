@@ -24,17 +24,6 @@ public class HibernateConf {
         return sessionFactory;
     }
 
-    // @Bean
-    // public DataSource dataSource() {
-    //     BasicDataSource dataSource = new BasicDataSource();
-    //     dataSource.setDriverClassName("org.h2.Driver");
-    //     dataSource.setUrl("jdbc:h2:mem:db;DB_CLOSE_DELAY=-1");
-    //     dataSource.setUsername("sa");
-    //     dataSource.setPassword("sa");
-    //
-    //     return dataSource;
-    // }
-
     @Bean
     public PlatformTransactionManager hibernateTransactionManager(DataSource dataSource) {
         HibernateTransactionManager transactionManager
@@ -43,14 +32,12 @@ public class HibernateConf {
         return transactionManager;
     }
 
-    private final Properties hibernateProperties() {
+    private Properties hibernateProperties() {
         Properties hibernateProperties = new Properties();
         hibernateProperties.setProperty(
                 "hibernate.hbm2ddl.auto", "create-drop");
         hibernateProperties.setProperty(
                 "hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
-        hibernateProperties.setProperty(
-                "hibernate.current_session_context_class", "thread");
         return hibernateProperties;
     }
 }
