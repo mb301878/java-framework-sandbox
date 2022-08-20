@@ -27,11 +27,11 @@ class Crud_scenarios_for_relations {
     @Container
     public static PostgreSQLContainer<?> postgreSQLContainer = DbProvider.defaultDb();
 
-    // @Autowired
-    // BarDAO barDAO;
-    //
-    // @Autowired
-    // UserDAO userDAO;
+    @Autowired
+    BarDAO barDAO;
+
+    @Autowired
+    UserDAO userDAO;
 
     @Autowired
     BarUserInsertRepository barUserInsertRepository;
@@ -41,12 +41,6 @@ class Crud_scenarios_for_relations {
         registry.add("spring.datasource.url", () -> postgreSQLContainer.getJdbcUrl());
         registry.add("spring.datasource.username", () -> postgreSQLContainer.getUsername());
         registry.add("spring.datasource.password", () -> postgreSQLContainer.getPassword());
-    }
-
-    @BeforeEach
-    void cleanDb() {
-        // barDAO.deleteAll();
-        // userDAO.deleteAll();
     }
 
     @Test
@@ -59,10 +53,9 @@ class Crud_scenarios_for_relations {
 
         barUserInsertRepository.insert(transaction);
 
-        // then(userDAO.existsById(1L)).isTrue();
-        // then(userDAO.existsById(2L)).isTrue();
-        // then(userDAO.existsById(3L)).isTrue();
-        // then(barDAO.existsById(10L)).isTrue();
+        then(userDAO.getBarByIdd(1L).getUserId()).isEqualTo(1L);
+        then(userDAO.getBarByIdd(2L).getUserId()).isEqualTo(2L);
+        then(userDAO.getBarByIdd(3L).getUserId()).isEqualTo(3L);
+        then(barDAO.getBarByIdd(10L).getBarId()).isEqualTo(10L);
     }
-
 }

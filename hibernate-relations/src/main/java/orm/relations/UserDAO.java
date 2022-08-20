@@ -1,9 +1,7 @@
 package orm.relations;
 
-import orm.relations.transaction.BarUserTransaction;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
@@ -13,19 +11,13 @@ import javax.transaction.Transactional;
 @Repository
 @Component
 @Transactional
-public class BarUserInsertRepository {
+class UserDAO {
 
     @Autowired
     private SessionFactory sessionFactory;
 
-    @Transactional
-    public void insert(BarUserTransaction barUserTransaction) {
+    public User getBarByIdd(long id) {
         Session session = sessionFactory.getCurrentSession();
-        // Transaction tx = session.beginTransaction();
-        session.save(barUserTransaction.getBar());
-        barUserTransaction.getUsers().forEach(session::save);
-        // tx.commit();
+        return session.get(User.class, id);
     }
-
-
 }
