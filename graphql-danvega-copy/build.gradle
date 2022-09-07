@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+}
+
+group 'mb301878'
+version 'unspecified'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    implementation("org.springframework.boot:spring-boot-starter-graphql:2.7.3")
+    implementation("org.springframework.boot:spring-boot-starter-web:2.7.3")
+    testImplementation("org.springframework.boot:spring-boot-starter-test:2.7.3")
+    implementation("org.springframework:spring-webflux:5.3.22")
+    implementation("org.springframework.graphql:spring-graphql-test:1.0.1")
+}
+
+test {
+    useJUnitPlatform()
+}
+sourceCompatibility = JavaVersion.VERSION_16
+targetCompatibility = JavaVersion.VERSION_16
