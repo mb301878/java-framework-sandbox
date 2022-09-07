@@ -1,0 +1,9 @@
+type Movie {
+    id: ID!,
+    author: String,
+    url: String
+}
+
+type Query {
+    movies(limit: Int): [Movie]
+}

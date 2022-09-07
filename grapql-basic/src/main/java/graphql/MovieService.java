@@ -14,7 +14,7 @@ public class MovieService {
 
     private final MovieRepo movieRepo;
 
-    public List<Movie> get(long count) {
+    public List<Movie> get(int count) {
         return movieRepo
                 .findAll()
                 .stream()

@@ -14,7 +14,7 @@ public class MovieQuery implements GraphQLQueryResolver {
 
     private final MovieService movieService;
 
-    public List<Movie> getMovies(long limit) {
+    public List<Movie> getMovies(int limit) {
         return movieService.get(limit);
     }
 
