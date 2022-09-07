@@ -1,8 +1,8 @@
 package graphql.ql;
 
+import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import graphql.MovieService;
 import graphql.dao.Movie;
-import graphql.kickstart.tools.GraphQLQueryResolver;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

@@ -1,8 +1,17 @@
 package graphql.dao;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
-@Repository
-public interface MovieRepo extends JpaRepository<Movie, Long> {
+import org.springframework.stereotype.Component;
+
+import java.util.List;
+
+@Component
+public class MovieRepo {
+
+    public List<Movie> findAll() {
+        return List.of(
+                new Movie(1L, "Andrzej", "www.andrzej.com"),
+                new Movie(2L, "Bendrzej", "www.bendrzej.com")
+        );
+    }
 }
