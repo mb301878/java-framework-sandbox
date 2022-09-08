@@ -3,4 +3,5 @@ include 'rest'
 include 'hibernate-relations'
 include 'graphql-danvega-copy'
 include 'grapql-basic'
+include 'liquibase-basic'
 
